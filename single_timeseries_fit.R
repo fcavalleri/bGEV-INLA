@@ -8,8 +8,8 @@ require(sf)
 # -------------------------------------------------
 # 1. Data upload and preparation
 
-path_in <- "C:/Users/cavalleri/OneDrive - RSE S.p.A/Dataset/Renalyses/MERIDA-HRES/BlockMaxima/"
-path_out <- "C:/Users/cavalleri/OneDrive - RSE S.p.A/Dataset/Renalyses/MERIDA-HRES/BlockMaxima/"
+path_in <- ## where you store the data (already uploaded here in GitHub)
+path_out <- ## where you want to put fitted parameters and plots if you save them
 
 infile <- paste0(path_in,"AnnualMaximaSeries_box.nc")
 r <- stack(infile)
