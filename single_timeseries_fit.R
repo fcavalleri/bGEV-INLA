@@ -104,6 +104,12 @@ writeLines(sprintf("lon: %.2f, lat: %.2f",time_series_lon,time_series_lat))
 data.bgev = data.frame(y = time_series_standardized, intercept=1, spread.x = spread.x, tail.x = tail.x)
   
 # INLA fit
+
+#############
+#  My best result: putting prec = 1/variance of the timeseries, and mean = median of the timeseries.
+#############
+
+
 fit1 = inla(formula,
             family = "bgev",
             data = data.bgev,
