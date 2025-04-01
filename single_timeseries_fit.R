@@ -162,8 +162,8 @@ hist(time_series_standardized,breaks = x_obs ,prob = TRUE,#ylim=c(0,3),
      main="density plot",xlab = "level", ylab = "probability")
 lines(x_gev,y_bgev,col='red',lw=3)
 lines(x_gev,y_gev,col='blue',lw=3)
-legend(0.8, 2.5, legend=c("bGEV (INLA)", "GEV"),
-       col=c("red", "blue"), lw=3, cex=0.6)
+legend(0.8*max(x_gev), 0.8*max(y_gev), legend=c("bGEV (INLA)", "GEV"),
+       col=c("red", "blue"), lw=3,cex=0.6)
 
 # PP-Plot 
 hist_obj <- hist(time_series_standardized,breaks = x_obs,plot = FALSE)
@@ -177,8 +177,8 @@ plot(p_obs,p_bmod,type='p',pch=19,col='red',xlim=c(0,max(c(p_obs,p_mod))),ylim=c
      main="probability plot",xlab = "observed probability (frequency)", ylab = "fitted probability")
 points(p_obs,p_mod,type='p',pch=19,col='blue')
 lines(c(0,max(c(p_obs,p_mod))),c(0,max(c(p_obs,p_mod))),type='l',lty='dashed')
-legend(0.15, 0.05, legend=c("bGEV (INLA)", "GEV"),
-       col=c("red", "blue"),pch=19)
+legend(0.8*max(p_obs), 0.2*max(p_mod), legend=c("bGEV (INLA)", "GEV"),
+       col=c("red", "blue"),pch=19,cex=0.6)
 
 # QQ-Plot
 q_obs <- quantile(time_series_standardized,seq(0.1,0.9,0.1))
@@ -189,7 +189,7 @@ plot(q_bmod,q_obs,col='red',type='p',pch=19,xlim=c(0,max(c(q_obs,q_mod))),ylim=c
      main="qq plot",xlab = "fitted quantile", ylab = "observed quantile")
 points(q_mod,q_obs,type='p',pch=19,col='blue')
 lines(c(0,max(c(q_obs,q_mod))),c(0,max(c(q_obs,q_mod))),type='l',lty='dashed')
-legend(0.4, 0.1, legend=c("bGEV (INLA)", "GEV"),
-       col=c("red", "blue"),pch=19)
+legend(0.8*max(q_mod), 0.2*max(q_obs), legend=c("bGEV (INLA)", "GEV"),
+       col=c("red", "blue"),pch=19,cex=0.6)
 
 
