@@ -157,21 +157,21 @@ for(i in 1:n_pts){
 # -------------------------------------------------
 # 4. (optional) Save output parameters
 
-location_info <- cbind(coords,bGEV_location_post)
+bGEV_location_info <- cbind(coords,bGEV_location_post)
 colnames(location_info) <- c("lon","lat","mean","025to975quant")
-spread_info <- cbind(coords,bGEV_spread_post)
+bGEV_spread_info <- cbind(coords,bGEV_spread_post)
 colnames(spread_info) <- c("lon","lat","mean","025to975quant")
-tail_info <- cbind(coords,bGEV_tail_post)
+bGEV_tail_info <- cbind(coords,bGEV_tail_post)
 colnames(tail_info) <- c("lon","lat","mean","025to975quant")
 write.table(location_info, file = paste0(path_out,"bGEV_loc_pd.txt"), row.names = FALSE, append = FALSE, quote = TRUE, sep = " ")
 write.table(spread_info, file = paste0(path_out,"bGEV_spread_pd.txt"), row.names = FALSE, append = FALSE, quote = TRUE, sep = " ")
 write.table(tail_info, file = paste0(path_out,"bGEV_tail_pd.txt"), row.names = FALSE, append = FALSE, quote = TRUE, sep = " ")
 
-location_info <- cbind(coords,GEV_location_post)
+GEV_location_info <- cbind(coords,GEV_location_post)
 colnames(location_info) <- c("lon","lat","mean","025to975quant")
-scale_info <- cbind(coords,GEV_scale_post)
+GEV_scale_info <- cbind(coords,GEV_scale_post)
 colnames(scale_info) <- c("lon","lat","mean","025to975quant")
-shape_info <- cbind(coords,GEV_shape_post)
+GEV_shape_info <- cbind(coords,GEV_shape_post)
 colnames(shape_info) <- c("lon","lat","mean","025to975quant")
 write.table(location_info, file = paste0(path_out,"GEV_loc.txt"), row.names = FALSE, append = FALSE, quote = TRUE, sep = " ")
 write.table(spread_info, file = paste0(path_out,"GEV_scale.txt"), row.names = FALSE, append = FALSE, quote = TRUE, sep = " ")
@@ -181,7 +181,7 @@ write.table(tail_info, file = paste0(path_out,"GEV_shape.txt"), row.names = FALS
 # 5. Compare results
 
 # Convert bGEV into usual parameters
-GEVpar = giveme.gev.par(q = location_info[,3], sbeta = spread_info[,3], alpha = p.alpha, beta = p.beta, xi = tail_info[,3])
+GEVpar = giveme.gev.par(q = bGEV_location_info[,3], sbeta = bGEV_spread_info[,3], alpha = p.alpha, beta = p.beta, xi = bGEV_tail_info[,3])
 
 # Get average values of parameters from bGEV and GEV
 bGEV_loc_mean = GEVpar$mu
